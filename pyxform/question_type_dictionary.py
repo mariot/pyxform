@@ -308,6 +308,14 @@ QUESTION_TYPE_DICT = \
             "type": "select1"
         }
     },
+    "unique id": {
+        "control": {
+            "tag": "select1"
+        },
+        "bind": {
+            "type": "uniqueid"
+        }
+    },
     "select one external": {
         "control": {
             "tag": "input"

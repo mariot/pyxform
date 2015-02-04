@@ -1,5 +1,5 @@
 from question import Question, InputQuestion, TriggerQuestion, \
-    UploadQuestion, MultipleChoiceQuestion
+    UploadQuestion, MultipleChoiceQuestion, UniqueIdQuestion
 from section import RepeatingSection, GroupedSection
 from survey import Survey
 import utils
@@ -39,6 +39,7 @@ class SurveyElementBuilder(object):
         u"trigger": TriggerQuestion,
         u"select": MultipleChoiceQuestion,
         u"select1": MultipleChoiceQuestion,
+        u"uniqueid": UniqueIdQuestion,
         u"upload": UploadQuestion,
         }
 
