@@ -39,7 +39,7 @@ class SurveyElementBuilder(object):
         u"trigger": TriggerQuestion,
         u"select": MultipleChoiceQuestion,
         u"select1": MultipleChoiceQuestion,
-        u"uniqueid": UniqueIdQuestion,
+        u"unique_id": UniqueIdQuestion,
         u"upload": UploadQuestion,
         }
 
