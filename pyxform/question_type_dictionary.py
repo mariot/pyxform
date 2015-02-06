@@ -313,7 +313,7 @@ QUESTION_TYPE_DICT = \
             "tag": "select1"
         },
         "bind": {
-            "type": "unique_id"
+            "type": "select1"
         }
     },
     "select one external": {
