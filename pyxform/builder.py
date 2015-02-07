@@ -1,5 +1,5 @@
 from question import Question, InputQuestion, TriggerQuestion, \
-    UploadQuestion, MultipleChoiceQuestion, UniqueIdQuestion
+    UploadQuestion, MultipleChoiceQuestion
 from section import RepeatingSection, GroupedSection
 from survey import Survey
 import utils
