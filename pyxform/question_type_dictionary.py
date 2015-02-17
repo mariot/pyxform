@@ -308,7 +308,7 @@ QUESTION_TYPE_DICT = \
             "type": "select1"
         }
     },
-    "unique_id": {
+    "dw_idnr": {
         "control": {
             "tag": "select1"
         },

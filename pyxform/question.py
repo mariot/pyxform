@@ -182,12 +182,6 @@ class MultipleChoiceQuestion(Question):
                 result.appendChild(n)
         return result
 
-# class UniqueIdQuestion(MultipleChoiceQuestion):
-#
-#     def __init__(self, *args, **kwargs):
-#         kwargs['children'] = ['placeholder']
-#         kwargs['tag'] = 'select1'
-#         super.__init__(args, kwargs)
 
 class SelectOneQuestion(MultipleChoiceQuestion):
     def __init__(self, *args, **kwargs):
