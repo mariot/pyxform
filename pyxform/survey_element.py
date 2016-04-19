@@ -328,11 +328,11 @@ class SurveyElement(dict):
                     bind_dict[k] = survey.insert_xpaths(v)
                 except PyXFormError as e:
                     referred_field_name = re.findall(r"\$\{(.*?)\}", v)[0]
-                    if 'multiple' not in e.message: # check for er
-                        message = "There is more than one question with same name '%s'", referred_field_name
+                    if 'multiple' in e.message: #Hacky way Need to change
+                        custom_message = "There is more than one question with same name %s" % referred_field_name
                     else:
-                        message = "There is no question with name '%s'", referred_field_name
-                    raise BindError(self, k, e.message)
+                        custom_message = "There is no question with name %s" % referred_field_name
+                    raise BindError(self, k, custom_message)
             return node(u"bind", nodeset=self.get_xpath(), **bind_dict)
         return None
 
