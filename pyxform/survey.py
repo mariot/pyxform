@@ -21,6 +21,7 @@ nsmap = {
     u"xmlns:orx": u"http://openrosa.org/xforms"
     }
 
+FIELD_NAME_PATTERN = r"\$\{(.*?)\}"
 
 class Survey(Section):
 
@@ -389,7 +390,7 @@ class Survey(Section):
         """
         Replace all instances of ${var} with the xpath to var.
         """
-        bracketed_tag = r"\$\{(.*?)\}"
+        bracketed_tag = FIELD_NAME_PATTERN
 
         return re.sub(bracketed_tag, self._var_repl_function, unicode(text))
 
@@ -419,7 +420,7 @@ class Survey(Section):
         text_node.data = text
         xml_text = text_node.toxml()
 
-        bracketed_tag = r"\$\{(.*?)\}"
+        bracketed_tag = FIELD_NAME_PATTERN
         # need to make sure we have reason to replace
         # since at this point < is &lt,
         # the net effect &lt gets translated again to &amp;lt;

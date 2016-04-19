@@ -2,8 +2,9 @@ import json
 from utils import is_valid_xml_tag, node
 from xls2json import print_pyobj_to_json
 from question_type_dictionary import QUESTION_TYPE_DICT
-from errors import PyXFormError
-
+from errors import PyXFormError, BindError
+# from survey import FIELD_NAME_PATTERN
+import re
 
 def _overlay(over, under):
     if type(under) == dict:
@@ -11,7 +12,6 @@ def _overlay(over, under):
         result.update(over)
         return result
     return over if over else under
-
 
 class SurveyElement(dict):
     """
@@ -324,7 +324,15 @@ class SurveyElement(dict):
                     v = "jr:itext('%s')" % self._translation_path(u'jr:requiredMsg')
                 if k == u'jr:noAppErrorString' and type(v) is dict:
                     v = "jr:itext('%s')" % self._translation_path(u'jr:noAppErrorString')
-                bind_dict[k] = survey.insert_xpaths(v)
+                try:
+                    bind_dict[k] = survey.insert_xpaths(v)
+                except PyXFormError as e:
+                    referred_field_name = re.findall(r"\$\{(.*?)\}", v)[0]
+                    if 'multiple' not in e.message: # check for er
+                        message = "There is more than one question with same name '%s'", referred_field_name
+                    else:
+                        message = "There is no question with name '%s'", referred_field_name
+                    raise BindError(self, k, e.message)
             return node(u"bind", nodeset=self.get_xpath(), **bind_dict)
         return None
 
