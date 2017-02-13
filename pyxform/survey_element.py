@@ -118,7 +118,7 @@ class SurveyElement(dict):
 
     def validate(self):
         if not is_valid_xml_tag(self.name):
-            msg = "The name '%s' is an invalid xml tag. Names must begin with a letter, colon, or underscore, subsequent characters can include numbers, dashes, and periods." % self.name
+            msg = "The name '%s' is an invalid xml tag. Names must begin with a letter, colon, or underscore, subsequent characters can include numbers and dashes." % self.name
             raise PyXFormError(msg)
 
     #TODO: Make sure renaming this doesn't cause any problems

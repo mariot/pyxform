@@ -519,8 +519,8 @@ def workbook_to_json(
             error_message += " Invalid question name [" + question_name + "]"
             error_message += "Names must begin with a letter, colon,"\
                              + " or underscore."
-            error_message += "Subsequent characters can include numbers,"\
-                             + " dashes, and periods."
+            error_message += "Subsequent characters can include numbers"\
+                             + " and dashes."
             raise PyXFormError(error_message)
 
         if constants.LABEL not in row and \
